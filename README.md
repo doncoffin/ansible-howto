@@ -58,7 +58,7 @@ Ansible is a Python project. To avoid Python dependancy nightmares, use a virtua
 
 3. You should see output similar to the following
 ```
-(venv) dgcoffin@INTclVWEjgjQR2T:~/ansible-demo$ ansible-playbook --check -i inventory.yml playbook.yml
+(venv) bash:~/ansible-demo$ ansible-playbook --check -i inventory.yml playbook.yml
 
 PLAY [Demo Playbook] ***************************************************************************************************
 
