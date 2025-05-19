@@ -1,0 +1,22 @@
+---
+- name: Demo Playbook
+  hosts: demo
+  become: true
+  gather_facts: true
+
+  tasks:
+
+    - name: Display system information
+      debug:
+        msg: "This host is running {{ ansible_distribution }} {{ ansible_distribution_version }} on {{ ansible_architecture }}."
+
+    - name: Ensure 'sl' package is installed
+      package:
+        name: sl
+        state: present
+
+    - name: Ensure /etc/shadow has mode 0600
+      file:
+        path: /etc/shadow
+        mode: '0600'
+        state: file
