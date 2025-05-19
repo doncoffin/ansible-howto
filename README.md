@@ -47,3 +47,38 @@ Ansible is a Python project. To avoid Python dependancy nightmares, use a virtua
    `(venv) bash:~ansible-env$ deactivate`
 
 ## Running A Playbook: A Simplistic Example
+
+1. Change into your playbook directory
+   
+   `(venv) bash:~/ansible-env$ cd ../ansible-demo`
+
+2. Run the playbook in check/dry-run mode
+   
+   `(venv) bash:~/ansible-demo$ ansible-playbook --check -i inventory.yml playbook.yml`
+
+3. You should see output similar to the following
+```
+(venv) dgcoffin@INTclVWEjgjQR2T:~/ansible-demo$ ansible-playbook --check -i inventory.yml playbook.yml
+
+PLAY [Demo Playbook] ***************************************************************************************************
+
+TASK [Gathering Facts] *************************************************************************************************
+[WARNING]: Platform linux on host localhost is using the discovered Python interpreter at /home/dgcoffin/ansible-
+env/venv/bin/python3.12, but future installation of another Python interpreter could change the meaning of that path.
+See https://docs.ansible.com/ansible-core/2.18/reference_appendices/interpreter_discovery.html for more information.
+ok: [localhost]
+
+TASK [Display system information] **************************************************************************************
+ok: [localhost] => {
+    "msg": "This host is running Ubuntu 24.04 on x86_64."
+}
+
+TASK [Ensure 'sl' package is installed] ********************************************************************************
+changed: [localhost]
+
+TASK [Ensure /etc/shadow has mode 0600] ********************************************************************************
+changed: [localhost]
+
+PLAY RECAP *************************************************************************************************************
+localhost                  : ok=4    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
