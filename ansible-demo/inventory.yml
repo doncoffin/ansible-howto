@@ -1,0 +1,12 @@
+# The group 'all' has a host 'localhost' which uses local ansible connections
+all:
+  hosts:
+    localhost:
+      ansible_connection: local
+
+# The custom group 'demo' has a host 'localhost'...it is common for a host to be part of more than one group.
+# We don't specify local connections here, as that was already done for 'localhost' under all hosts, above.
+  children:
+    demo:
+      hosts:
+        localhost:
